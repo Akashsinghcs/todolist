@@ -1,0 +1,77 @@
+.Head {
+  background-color: #f44336;
+  padding: 30px 40px;
+  color: rgb(9, 9, 9);
+  text-align: center;
+  font-size: 150%;
+  width: 55vw;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 1px 1px 0px 1px #555252;
+}
+
+.inputBox {
+  height: 28px;
+  width: 200px;
+  border: 1px solid blue;
+  border-radius: 5px;
+  margin: 0px 4px;
+}
+.currenttask {
+  border: black;
+  width: 8vw;
+  margin: 8px auto;
+  border-radius: 5px;
+  box-shadow: 1px 1px 0px 1px #555252;
+}
+.list {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  background-color: hsl(198, 34%, 89%);
+  transition: background-color 300ms;
+  color: black;
+  cursor: pointer;
+  border: 1px solid black;
+  width: 60vw;
+  margin: 16px auto;
+  box-shadow: 1px 1px 6px 0px #060505;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+ol {
+  width: 100%;
+  margin: auto;
+  padding: 0px;
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+}
+
+li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(203, 236, 236, 0.586);
+  border-bottom: 1px solid black;
+  height: 40px;
+  width: 100%;
+  list-style-position: inside;
+}
+li:hover {
+  background-color: antiquewhite;
+}
+
+li > span {
+  margin-left: 16px;
+}
+
+.deleteButton {
+  height: 30px;
+  width: 30px;
+  margin-right: 16px;
+  border-radius: 25px;
+  margin-left: 48px;
+}

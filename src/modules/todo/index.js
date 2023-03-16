@@ -1,33 +1,66 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import "./style.css";
 
 export default function Todolist() {
+  const savedList = JSON.parse(localStorage.getItem("ak")) || [];
   const [currentTask, setCurrentTask] = useState();
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(savedList);
+
   let handleChange = (event) => {
-    console.log(event);
     setCurrentTask(event.target.value);
   };
 
-  let myFunction = (a) => {
-    a.preventDefault();
-    console.log(a);
-    setList([...list, currentTask]);
-    setCurrentTask();
+  /**
+   * My Function is arrow function, takes event as paramter.
+   * Inserts current task in list, and clears current task to empty string
+   */
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    /// list = [1, 2, 3], currentTask = 4
+    //  [1, 2, 3, 4]
+    // list.push(4)
+    const updatedList = [...list, currentTask];
+    setList(updatedList);
+    setCurrentTask("");
+    localStorage.setItem("ak", JSON.stringify(updatedList));
   };
+
+  const handleDelete = (task) => {
+    const updatedList = list.filter((value) => value !== task);
+    setList(updatedList);
+    localStorage.setItem("ak", JSON.stringify(updatedList));
+  };
+
   return (
     <div>
-      <form onSubmit={myFunction}>
-        <label for="fname">Task:</label>
-        <input value={currentTask} onChange={handleChange} />
-
-        <input type="submit" value="Submit" />
+      <h3>To Do List</h3>
+      <form className="Head" onSubmit={handleSubmit}>
+        <label for="fname">Task</label>
+        <input className="inputBox" value={currentTask} onChange={handleChange} placeholder="   Enter your task" />
+        <input type="submit" value="submit" />
       </form>
-      <div>currentTask: {currentTask}</div>
-      <div>
-        {list.map((task) => {
-          return <div>{task}</div>;
-        })}
-      </div>
+      {list.length !== 0 && (
+        <div className="list">
+          <ol>
+            {list.map((task, index) => {
+              return (
+                <li key={index}>
+                  <span>{task}</span>
+                  <button
+                    className="deleteButton"
+                    type="button"
+                    onClick={() => {
+                      handleDelete(task);
+                    }}
+                  >
+                    X
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      )}
     </div>
   );
 }
