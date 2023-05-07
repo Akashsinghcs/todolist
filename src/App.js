@@ -1,11 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Projects from "./modules/projects";
+import Todolist from "./modules/todo";
 
 function App() {
   return (
     <div className="App">
-      <Projects></Projects>
+      <Todolist />
     </div>
   );
 }
